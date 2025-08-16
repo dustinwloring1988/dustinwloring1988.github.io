@@ -63,9 +63,11 @@
             gap: 10px;
         }
 
-        .logo::before {
-            content: "🔴";
-            font-size: 1.2rem;
+        /* <CHANGE> Updated logo to use actual image instead of emoji */
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -176,6 +178,18 @@
             color: var(--primary-color);
         }
 
+        /* <CHANGE> Added styles for model release button */
+        .btn-model {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-model:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
         .section {
             margin: 4rem 0;
         }
@@ -217,6 +231,54 @@
 
         .card p {
             color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        /* <CHANGE> Added styles for blog card with image */
+        .blog-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.2);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 2rem;
+        }
+
+        .blog-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-card p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(29, 78, 216, 0.2));
+            color: #60a5fa;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
             margin-bottom: 1rem;
         }
 
@@ -392,11 +454,16 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">AI RedTeam Hub</a>
+                <!-- <CHANGE> Updated logo to use actual Red Teaming logo image -->
+                <a href="#" class="logo">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-XK4ngOFjwAm0Wx7c2FayMLVCvCROM8.png" alt="Red Teaming Logo">
+                    AI RedTeam Hub
+                </a>
                 <ul class="nav-links">
                     <li><a href="#methodology">Methodology</a></li>
                     <li><a href="#tools">Tools</a></li>
                     <li><a href="#resources">Resources</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#community">Community</a></li>
                 </ul>
             </nav>
@@ -410,6 +477,8 @@
                 <p>Comprehensive resources for AI security research, adversarial testing, and responsible AI safety evaluation</p>
                 <div class="cta-buttons">
                     <a href="#methodology" class="btn btn-primary">🎯 Start Red Teaming</a>
+                    <!-- <CHANGE> Added model release button -->
+                    <a href="https://huggingface.co/AIGym/gpt-oss-20B-jail-broke" target="_blank" class="btn btn-model">🤖 GPT-OSS 20B Model</a>
                     <a href="#tools" class="btn btn-secondary">🛠️ Explore Tools</a>
                 </div>
             </section>
@@ -418,6 +487,31 @@
                 <h4>⚠️ Ethical Research Notice</h4>
                 <p>This resource is intended for legitimate security research and AI safety evaluation. Always follow responsible disclosure practices and obtain proper authorization before testing systems you don't own.</p>
             </div>
+
+            <!-- <CHANGE> Added blog section with model announcement -->
+            <section id="blog" class="section">
+                <h2>📝 Latest Updates</h2>
+                <div class="grid">
+                    <div class="blog-card">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/model-fmYRoMfmYv6Ha5YvO362Db6mfonn0t.png" alt="GPT-OSS Model Release">
+                        <div class="blog-card-content">
+                            <div class="coming-soon">Coming August 27th</div>
+                            <h3>GPT-OSS 20B: Breaking New Ground in Open AI</h3>
+                            <p>Our comprehensive analysis of the groundbreaking GPT-OSS 20B model release and its implications for AI safety research and red teaming methodologies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🔬 Research Insights</h3>
+                        <p>Stay updated with the latest findings in AI red teaming, vulnerability research, and safety evaluation techniques from our community.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>📊 Case Studies</h3>
+                        <p>Real-world examples of AI red teaming in action, including detailed breakdowns of discovered vulnerabilities and mitigation strategies.</p>
+                    </div>
+                </div>
+            </section>
 
             <section id="methodology" class="section">
                 <h2>Red Teaming Methodology</h2>
@@ -577,6 +671,8 @@ Test identical scenarios with different:
     </footer>
 
     <script>
+        // ... existing code ...
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
